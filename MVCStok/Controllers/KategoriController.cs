@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Protocols;
 using MVCStok.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVCStok.Controllers
 {
@@ -12,9 +14,10 @@ namespace MVCStok.Controllers
     {
         // GET: Kategori
         MVCDbStokEntities1 db= new MVCDbStokEntities1();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)  //? null değer almasını sağlar böylece hata vermez
         {
-            var degerler = db.TBLKATEGORILER.ToList();
+            // var degerler = db.TBLKATEGORILER.ToList();
+            var degerler = db.TBLKATEGORILER.ToList().ToPagedList(sayfa, 4);
             return View(degerler);
         }
         [HttpGet] // Herhangi bir işlem yapmazsam sayfayı geri döndürme işlemi
