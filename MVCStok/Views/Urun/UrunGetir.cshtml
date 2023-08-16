@@ -16,8 +16,13 @@
         @Html.TextBoxFor(m => m.URUNAD, new { @class = "form-control" })
         <br />
 
+        @Html.LabelFor(m => m.MARKA)
+        @Html.TextBoxFor(m => m.MARKA, new { @class = "form-control" })
+        <br />
+
         @Html.LabelFor(m => m.URUNKATEGORI)
-        @Html.TextBoxFor(m => m.URUNKATEGORI, new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID,(List<SelectListItem>)ViewBag.dgr, new {@class="form-control"})
+        @*@Html.TextBoxFor(m => m.URUNKATEGORI, new { @class = "form-control" })*@
         <br />
 
         @Html.LabelFor(m => m.FIYAT)

@@ -49,10 +49,33 @@ namespace MVCStok.Controllers
             db.SaveChanges();
             return RedirectToAction("Index"); //Index sayfasına yönlendir
         }
-        public ActionResult UrunGetir(int id)
+        public ActionResult UrunGetir(int? id)
         {
             var urun = db.TBLURUNLERR.Find(id);
+            List<SelectListItem> degerler = (from i in db.TBLKATEGORILER.ToList()  //Kategorileirn içerisinden tblkategorilerin listesini i'ye ata,
+                                                                                   //yeni listeyi seç 
+                                             select new SelectListItem
+                                             {
+                                                 Text = i.KATEGORIAD,   //Bu seçmiş olduğumuz listin değeri i'den geln KATEGORIAD
+                                                 Value = i.KATEGORIID.ToString()  //bunun valuesu da i'nin KATEGORIID'si
+
+                                             }).ToList();
+            ViewBag.dgr = degerler;
             return View("UrunGetir", urun);
+        }
+        public ActionResult Guncelle(TBLURUNLERR p)
+        {
+            var urun = db.TBLURUNLERR.Find(p.URUNID);
+            urun.URUNAD = p.URUNAD;
+            urun.MARKA = p.MARKA;
+            urun.STOK = p.STOK;
+            urun.FIYAT= p.FIYAT;
+            // urun.URUNKATEGORI=  p.URUNKATEGORI;
+            var ktg = db.TBLKATEGORILER.Where(m => m.KATEGORIID == p.TBLKATEGORILER.KATEGORIID).FirstOrDefault(); //Katogoriid si p1den gelen tblkategorilerdeki kategoriideye eşit olan değeri getirir.
+            urun.URUNKATEGORI = ktg.KATEGORIID; //urunkategoriye kategoriid den gelen işlem atandı
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
 
