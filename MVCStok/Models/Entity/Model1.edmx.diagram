@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b023eba56b9e4e28817810c8ba3a3e00" Name="Diagram1">
+        <EntityTypeShape EntityType="MVCDbStokModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCDbStokModel.TBLKATEGORILER" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCDbStokModel.TBLMUSTERILER" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCDbStokModel.TBLSATISLAR" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCDbStokModel.TBLURUNLERR" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="MVCDbStokModel.FK_TBLURUNLERR_TBLKATEGORILER" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCDbStokModel.FK_TBLSATISLAR_TBLMUSTERILER" ManuallyRouted="false" />
+        <AssociationConnector Association="MVCDbStokModel.FK_TBLSATISLAR_TBLURUNLERR" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

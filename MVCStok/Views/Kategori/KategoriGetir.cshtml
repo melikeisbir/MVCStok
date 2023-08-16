@@ -1,0 +1,22 @@
+﻿@model MVCStok.Models.Entity.TBLKATEGORILER
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@*Bi action/tetikleme hareket oldugunda guncelleme calısacak.
+Formmethod.post oludugu zaman kategoride guncelleme calısacak*@
+@using (Html.BeginForm("Guncelle", "Kategori", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.KATEGORIID) @*Label varsa textbox olmalı*@ 
+        @Html.TextBoxFor(m=>m.KATEGORIID, new { @class="form-control" }) @*burdaki class süsleme için*@
+ <br />
+        @Html.LabelFor(m=>m.KATEGORIAD)
+        @Html.TextBoxFor(m=>m.KATEGORIAD, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Kategori Güncelle</button>
+    </div>
+}
