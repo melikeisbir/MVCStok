@@ -5,6 +5,15 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+    <p>
+        <b>Aranacak Müşteri Adı:</b> @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
 <table class="table table-bordered">
     <tr>
         <th>MÜŞTERİ ID</th>

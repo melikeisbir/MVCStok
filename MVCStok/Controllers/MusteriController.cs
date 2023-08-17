@@ -11,10 +11,16 @@ namespace MVCStok.Controllers
     {
         // GET: Musteri
         MVCDbStokEntities1 db= new MVCDbStokEntities1();
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var degerler=db.TBLMUSTERILER.ToList();
-            return View(degerler);
+            var degerler = from d in db.TBLMUSTERILER select d;  //değerleri tblmusteriler uzerinde cekip d üzerine attık
+            if(!string.IsNullOrEmpty(p))//Eğer p değeri null değilse yap
+            {
+                degerler = degerler.Where(m => m.MUSTERIAD.Contains(p)); // boş değilse müşteri adı içerisinde parametreye eşit olan değerleir getirecek.
+            }
+            return View(degerler.ToList());
+            //var degerler=db.TBLMUSTERILER.ToList();
+            //return View(degerler);
         }
         [HttpGet]
         public ActionResult YeniMusteri()

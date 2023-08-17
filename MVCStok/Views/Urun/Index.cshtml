@@ -5,33 +5,45 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>ÜRÜN ID</th>
-        <th>ÜRÜN ADI</th>
-        <th>MARKASI</th>
-        <th>KATEGORİ</th>
-        <th>FİYAT</th>
-        <th>STOK</th>
-        <th>SİL</th>
-        <th>GÜNCELLE</th>
 
-    </tr>
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ÜRÜN ID</th>
+            <th>ÜRÜN ADI</th>
+            <th>MARKASI</th>
+            <th>KATEGORİ</th>
+            <th>FİYAT</th>
+            <th>STOK</th>
+            <th>SİL</th>
+            <th>GÜNCELLE</th>
+
+        </tr>
+    </thead>
     <tbody>
-        @foreach(var urn in Model)
-            {
-                <tr>
-                    <th>@urn.URUNID</th>
-                    <td>@urn.URUNAD</td>
-                    <td>@urn.MARKA</td>
-                    <td>TBLKATEGORILER.KATEGORIID</td>
-                    <td>@urn.FIYAT</td>
-                    <td>@urn.STOK</td>
-                    <td><a href="/URUN/SIL/@urn.URUNID" class="btn btn-danger">SİL</a></td>
-                    <td><a href="/URUN/UrunGetir/@urn.URUNID" class="btn btn-success">GÜNCELLE</a></td>
-                </tr>
-            } 
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <th>@urn.URUNID</th>
+                <td>@urn.URUNAD</td>
+                <td>@urn.MARKA</td>
+                <td>TBLKATEGORILER.KATEGORIID</td>
+                <td>@urn.FIYAT</td>
+                <td>@urn.STOK</td>
+                <td><a href="/URUN/SIL/@urn.URUNID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/URUN/UrunGetir/@urn.URUNID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
+        }
     </tbody>
 </table>
 <a href="/URUN/UrunEkle/" class="btn btn-primary">YENİ ÜRÜN EKLE</a>
+@*<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jg-2.2.4/jszip-3.1.3/pd"
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />*@
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> @*bu stiller ürünler sayfasındaki tablo stili*@
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script>
+    $('#tbl1').DataTable();
+</script>
 
